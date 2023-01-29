@@ -1,5 +1,3 @@
-https://miro.medium.com/v2/resize:fit:4800/format:webp/1*GDMbrlS_8XoigubnN4wMOQ.png
-
 ## SSH key
 
 ssh-keygen
