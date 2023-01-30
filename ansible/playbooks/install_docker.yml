@@ -14,13 +14,13 @@
         state: present
 
     - name: Get docker convenience script
-      shell: "curl -fsSL https://get.docker.com -o get-docker.sh"
+      ansible.builtin.shell: "curl -fsSL https://get.docker.com -o get-docker.sh"
 
     - name: Execute convenience script
-      shell: "sh ./get-docker.sh"
+      ansible.builtin.shell: "sh ./get-docker.sh"
 
     - name: Check docker service state
-      service:
+      ansible.builtin.service:
         name: docker
         state: started
         enabled: yes
