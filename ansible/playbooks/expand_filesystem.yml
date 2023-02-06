@@ -1,5 +1,6 @@
 - hosts: all
   become: true
+  gather_facts: false
   tasks:
     - name: Check if filesystem is expandable
       ansible.builtin.shell: "raspi-config nonint get_can_expand"
