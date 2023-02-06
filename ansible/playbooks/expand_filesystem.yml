@@ -1,27 +1,19 @@
 - hosts: all
   become: true
   tasks:
-    - name: Check if FS is expandable
-      shell: "raspi-config nonint get_can_expand"
+    - name: Check if filesystem is expandable
+      ansible.builtin.shell: "raspi-config nonint get_can_expand"
       register: fs_filled
-      changed_when: False
+      changed_when: false
 
-    - name: Print if FS is expandable or not
-      debug:
+    - name: Print if filesystem is expandable or not
+      ansible.builtin.debug:
         msg: "Filesystem is expandable! [{{ fs_filled.stdout }}]"
       when: fs_filled.stdout == '0'
 
-    - name: Expand Filesystem
-      shell: "raspi-config nonint do_expand_rootfs"
+    - name: Expand filesystem
+      ansible.builtin.shell: "raspi-config nonint do_expand_rootfs"
 
-https://github.com/giuaig/ansible-raspi-config/blob/master/raspi-config.yml
-
-
-
-
-
-          - name: Disk usage from command module
-            command: df -h
-            register: space
-          - debug:
-                  var: space.stdout_lines
+    - name: Print reboot reminder
+      ansible.builtin.debug:
+        msg: "Reboot pi after expansion!"

@@ -2,7 +2,7 @@
   become: true
   tasks:
     - name: Reboot
-      ansible.builtin.shell: "sleep 1 && shutdown -r now +1"
+      ansible.builtin.shell: "sleep 1 && shutdown --reboot now +1"
       async: 1
       poll: 0
       notify:

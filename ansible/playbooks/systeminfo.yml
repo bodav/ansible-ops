@@ -1,0 +1,28 @@
+- hosts: all
+  become: true
+  tasks:
+    - name: Get Raspberry Pi type
+      ansible.builtin.shell: "raspi-config nonint get_pi_type"
+      register: pi_type
+      changed_when: false
+
+    - name: Show pi version
+      ansible.builtin.debug:
+        msg: "Pi version: {{ pi_type.stdout }}"
+
+    - name: Get hostname
+      ansible.builtin.shell: "raspi-config nonint get_hostname"
+      register: pi_hostname
+      changed_when: false
+
+    - name: Print current hostname
+      ansible.builtin.debug:
+        msg: "Current hostname: {{ pi_hostname.stdout }}"
+
+    - name: Disk usage
+      ansible.builtin.command: df -h
+      register: space
+
+    - name: Print disk usage
+      ansible.builtin.debug:
+        var: space.stdout_lines

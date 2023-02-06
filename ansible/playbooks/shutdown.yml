@@ -1,0 +1,5 @@
+- hosts: all
+  become: true
+  tasks:
+    - name: Shutdown
+      ansible.builtin.shell: "sleep 1 && shutdown --poweroff now"

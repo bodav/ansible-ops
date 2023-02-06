@@ -9,5 +9,5 @@ ssh-copy-id -i .ssh/id_rsa pi@devpi.local
 
 ```
 ansible all -m ping
-ansible-playbook playbooks/apt_upgrade.yml
+ansible-playbook playbooks/ping.yml
 ```
