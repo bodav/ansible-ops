@@ -7,10 +7,10 @@
       async: 1
       poll: 0
       notify:
-        - wait-for-reboot
+        - Wait-for-reboot
 
   handlers:
-    - name: Wait for reboot
+    - name: Wait-for-reboot
       ansible.builtin.wait_for_connection:
         delay: "5"
         timeout: "300"

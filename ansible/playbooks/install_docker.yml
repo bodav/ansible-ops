@@ -18,9 +18,3 @@
 
     - name: Execute convenience script
       ansible.builtin.shell: "sh ./get-docker.sh"
-
-    - name: Check docker service state
-      ansible.builtin.service:
-        name: docker
-        state: started
-        enabled: true

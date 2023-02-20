@@ -26,3 +26,11 @@
     - name: Print disk usage
       ansible.builtin.debug:
         var: space.stdout_lines
+
+    - name: Docker version
+      ansible.builtin.command: docker --version
+      register: docker
+
+    - name: Print docker version
+      ansible.builtin.debug:
+        var: docker.stdout_lines
