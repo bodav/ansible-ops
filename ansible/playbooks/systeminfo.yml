@@ -34,3 +34,7 @@
     - name: Print docker version
       ansible.builtin.debug:
         var: docker.stdout_lines
+
+    - name: Memory info
+      debug:
+        msg: "{{ ansible_memory_mb }}"
