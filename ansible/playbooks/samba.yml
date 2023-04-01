@@ -1,8 +1,0 @@
-- hosts: all
-  become: true
-  tasks:
-    - name: Install nfs-kernel-server
-      ansible.builtin.apt:
-        update_cache: true
-        name: nfs-kernel-server
-        state: present
