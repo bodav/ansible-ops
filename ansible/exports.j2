@@ -1,0 +1,4 @@
+# /etc/exports: the access control list for filesystems which may be exported
+#   to NFS clients.  See exports(5).
+#/mnt/shared            *(rw,sync,no_root_squash,no_subtree_check)
+#/mnt/shared *(rw,all_squash,insecure,async,no_subtree_check,anonuid=1000,anongid=1000)
