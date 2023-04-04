@@ -1,4 +1,5 @@
-- hosts: all
+- name: Download and install docker
+  hosts: all
   become: true
   tasks:
     - name: Install git
@@ -13,8 +14,12 @@
         name: curl
         state: present
 
-    - name: Get docker convenience script
-      ansible.builtin.shell: "curl -fsSL https://get.docker.com -o get-docker.sh"
+    - name: Download docker convenience script
+      ansible.builtin.get_url:
+        url: "https://get.docker.com"
+        dest: ~/get-docker.sh
+        mode: u+rwx
 
     - name: Execute convenience script
-      ansible.builtin.shell: "sh ./get-docker.sh"
+      ansible.builtin.command: "sh ./get-docker.sh"
+      changed_when: false

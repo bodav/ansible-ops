@@ -1,0 +1,15 @@
+- name: Set static ip
+  hosts: all
+  become: true
+  tasks:
+    - name: Insert/Update static ip configuration /etc/dhcpcd.conf
+      ansible.builtin.blockinfile:
+        path: /etc/dhcpcd.conf
+        block: |
+          interface eth0
+          static ip_address=192.168.1.2/24
+          static routers=192.168.1.1
+          static domain_name_servers=192.168.1.1
+
+    - name: Reboot
+      ansible.builtin.reboot:

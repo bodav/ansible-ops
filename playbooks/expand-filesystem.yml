@@ -1,9 +1,10 @@
-- hosts: all
+- name: Expand rpi filesystem if possible
+  hosts: all
   become: true
   gather_facts: false
   tasks:
     - name: Check if filesystem is expandable
-      ansible.builtin.shell: "raspi-config nonint get_can_expand"
+      ansible.builtin.command: "raspi-config nonint get_can_expand"
       register: fs_filled
       changed_when: false
 
@@ -13,8 +14,8 @@
       when: fs_filled.stdout == '0'
 
     - name: Expand filesystem
-      ansible.builtin.shell: "raspi-config nonint do_expand_rootfs"
+      ansible.builtin.command: "raspi-config nonint do_expand_rootfs"
+      changed_when: false
 
-    - name: Print reboot reminder
-      ansible.builtin.debug:
-        msg: "Reboot pi after expansion!"
+    - name: Reboot
+      ansible.builtin.reboot:

@@ -1,8 +1,9 @@
-- hosts: all
+- name: Get hosts system information
+  hosts: all
   become: true
   tasks:
     - name: Get Raspberry Pi type
-      ansible.builtin.shell: "raspi-config nonint get_pi_type"
+      ansible.builtin.command: "raspi-config nonint get_pi_type"
       register: pi_type
       changed_when: false
 
@@ -11,7 +12,7 @@
         msg: "Pi version: {{ pi_type.stdout }}"
 
     - name: Get hostname
-      ansible.builtin.shell: "raspi-config nonint get_hostname"
+      ansible.builtin.command: "raspi-config nonint get_hostname"
       register: pi_hostname
       changed_when: false
 
@@ -20,21 +21,23 @@
         msg: "Current hostname: {{ pi_hostname.stdout }}"
 
     - name: Disk usage
-      ansible.builtin.command: df -h
+      ansible.builtin.command: "df -h"
       register: space
+      changed_when: false
 
     - name: Print disk usage
       ansible.builtin.debug:
         var: space.stdout_lines
 
     - name: Docker version
-      ansible.builtin.command: docker --version
+      ansible.builtin.command: "docker --version"
       register: docker
+      changed_when: false
 
     - name: Print docker version
       ansible.builtin.debug:
         var: docker.stdout_lines
 
     - name: Memory info
-      debug:
+      ansible.builtin.debug:
         msg: "{{ ansible_memory_mb }}"

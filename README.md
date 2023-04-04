@@ -1,19 +1,14 @@
-# Headless boot
+## SSH key
 
-Use raspbian imager to setup hostname, user and network
+```
+ssh-keygen
+ssh-copy-id -i .ssh/id_rsa pi@devpi.local
+```
 
-# First boot
+## Ansible
 
-run raspi-config as root
-expand disk
-
-# Static ip
-
-/etc/dhcpcd.conf
-
-## Static IP configuration:
-
-interface eth0
-static ip_address=192.168.1.2/24
-static routers=192.168.1.1
-static domain_name_servers=192.168.1.1
+```
+ansible all -m ping
+ansible-playbook playbooks/ping.yml
+ansible-playbook --limit dev playbooks/ping.yml
+```
