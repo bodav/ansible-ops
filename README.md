@@ -9,6 +9,5 @@ ssh-copy-id -i .ssh/id_rsa pi@devpi.local
 
 ```
 ansible all -m ping
-ansible-playbook playbooks/ping.yml
 ansible-playbook --limit dev playbooks/ping.yml
 ```
