@@ -4,5 +4,5 @@
   gather_facts: false
   tasks:
     - name: Shutdown
-      ansible.builtin.command: "sleep 1 && shutdown --poweroff now"
+      ansible.builtin.command: "shutdown --poweroff now"
       changed_when: false
