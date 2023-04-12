@@ -1,0 +1,12 @@
+- name: Get docker stats
+  hosts: all
+  become: true
+  tasks:
+    - name: Get stats
+      ansible.builtin.command: "docker stats --no-stream"
+      register: stat
+      changed_when: false
+
+    - name: Show stats
+      ansible.builtin.debug:
+        msg: "{{ stat.stdout_lines }}"
