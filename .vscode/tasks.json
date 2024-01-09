@@ -7,7 +7,7 @@
       "label": "Ping",
       "type": "shell",
       "group": "none",
-      "detail": "test 123",
+      "detail": "Ping host",
       "command": "ansible-playbook --limit homepi.local playbooks/ping.yml",
       "presentation": {
         "reveal": "always",
