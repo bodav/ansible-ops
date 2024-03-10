@@ -4,7 +4,8 @@
   "runArgs": ["--env-file",".devcontainer/ansible.env"],
   "containerEnv": {
     "ANSIBLE_VERBOSITY": "2",
-    "ANSIBLE_INVENTORY": "inventory.yaml"
+    "ANSIBLE_INVENTORY": "inventory.yaml",
+    "ANSIBLE_HOST_KEY_CHECKING": "False"
   },
   "customizations": {
     "vscode": {
