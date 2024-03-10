@@ -9,7 +9,7 @@
   },
   "customizations": {
     "vscode": {
-      "extensions": ["redhat.ansible"],
+      "extensions": ["redhat.ansible", "esbenp.prettier-vscode"],
       "settings": {
         "terminal.integrated.defaultProfile.linux": "zsh"
       }

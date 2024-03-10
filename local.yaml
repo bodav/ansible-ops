@@ -1,4 +1,4 @@
-- name: local test
+- name: Local test
   hosts: all
   tasks:
     - name: Debug test
