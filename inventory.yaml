@@ -6,5 +6,4 @@ home:
     devpi.local:
       ansible_user: '{{ lookup("env", "ANSIBLE_USER") }}'
       ansible_password: '{{ lookup("env", "ANSIBLE_PASSWORD") }}'
-    localhost:
-      ansible_host: 127.0.0.1
+      
