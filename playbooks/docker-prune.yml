@@ -1,4 +1,4 @@
-- name: Docker janitor
+- name: Docker prune
   hosts: all
   become: true
   tasks:

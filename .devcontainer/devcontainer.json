@@ -5,7 +5,8 @@
   "containerEnv": {
     "ANSIBLE_VERBOSITY": "2",
     "ANSIBLE_INVENTORY": "inventory.yaml",
-    "ANSIBLE_HOST_KEY_CHECKING": "False"
+    "ANSIBLE_HOST_KEY_CHECKING": "False",
+    "ANSIBLE_STDOUT_CALLBACK": "yaml"
   },
   "customizations": {
     "vscode": {
