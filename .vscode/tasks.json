@@ -8,7 +8,7 @@
       "type": "shell",
       "group": "none",
       "detail": "Ping host",
-      "command": "ansible-playbook --limit prod playbooks/ping.yml",
+      "command": "make ping",
       "presentation": {
         "reveal": "always",
         "panel": "new"
