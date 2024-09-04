@@ -10,10 +10,7 @@
   },
   "customizations": {
     "vscode": {
-      "extensions": ["redhat.ansible", "esbenp.prettier-vscode", "ms-vscode.makefile-tools"],
-      "settings": {
-        "terminal.integrated.defaultProfile.linux": "zsh"
-      }
+      "extensions": ["redhat.ansible", "esbenp.prettier-vscode", "ms-vscode.makefile-tools"]
     }
   }
 }
