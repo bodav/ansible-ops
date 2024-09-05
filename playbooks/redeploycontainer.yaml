@@ -1,0 +1,37 @@
+- name: Deploy docker compose
+  hosts: all
+  become: true
+  gather_facts: false
+  vars:
+    pull_images: true
+    project_dir: "/opt/docker/app-stacks"
+    compose:
+      - ./blocky/compose.yaml
+      - ./nginx/compose.yaml
+      - ./dozzle/compose.yaml
+      - ./dockge/compose.yaml
+      - ./homepage/compose.yaml
+      - ./homebridge/compose.yaml
+
+  tasks:
+    - name: Docker compose down
+      ansible.builtin.command:
+        cmd: "docker compose -f {{ item }} down --remove-orphans"
+        chdir: "{{ project_dir }}"
+      loop: "{{ compose }}"
+      changed_when: false
+
+    - name: Docker compose pull
+      ansible.builtin.command:
+        cmd: "docker compose -f {{ item }} pull"
+        chdir: "{{ project_dir }}"
+      loop: "{{ compose }}"
+      changed_when: false
+      when: pull_images
+
+    - name: Docker compose up
+      ansible.builtin.command:
+        cmd: "docker compose -f {{ item }} up -d"
+        chdir: "{{ project_dir }}"
+      loop: "{{ compose }}"
+      changed_when: false
