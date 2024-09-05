@@ -4,4 +4,4 @@ ping:
 
 .PHONY: upgrade
 upgrade:
-	ansible-playbook --limit prod playbooks/apt-upgrade.yml
+	ansible-playbook --limit prod playbooks/aptupgrade.yaml
