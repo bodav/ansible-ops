@@ -1,4 +1,4 @@
-- name: Deploy docker compose
+- name: Pull compose stack
   hosts: all
   become: true
   gather_facts: false
@@ -6,17 +6,17 @@
     compose_file: "{{ composefile }}"
 
   tasks:
-    - name: Docker compose down
+    - name: Compose down
       ansible.builtin.command:
         cmd: "docker compose -f {{ compose_file }} down --remove-orphans"
       changed_when: false
 
-    - name: Docker compose pull
+    - name: Compose pull
       ansible.builtin.command:
         cmd: "docker compose -f {{ compose_file }} pull"
       changed_when: false
 
-    - name: Docker compose up
+    - name: Compose up
       ansible.builtin.command:
         cmd: "docker compose -f {{ compose_file }} up -d"
       changed_when: false

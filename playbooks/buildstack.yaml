@@ -1,0 +1,22 @@
+- name: Build compose stack
+  hosts: all
+  become: true
+  gather_facts: false
+  vars:
+    compose_file: "{{ composefile }}"
+
+  tasks:
+    - name: Compose down
+      ansible.builtin.command:
+        cmd: "docker compose -f {{ compose_file }} down --remove-orphans"
+      changed_when: false
+
+    - name: Compose build
+      ansible.builtin.command:
+        cmd: "docker compose -f {{ compose_file }} build"
+      changed_when: false
+
+    - name: Compose up
+      ansible.builtin.command:
+        cmd: "docker compose -f {{ compose_file }} up -d"
+      changed_when: false
