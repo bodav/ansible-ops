@@ -8,6 +8,7 @@
       ansible.builtin.apt:
         update_cache: true
         upgrade: true
+        autoremove: true
       register: apt
       changed_when: false
 
