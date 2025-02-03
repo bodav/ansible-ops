@@ -1,16 +1,20 @@
 {
   "name": "ansible-devcontainer",
   "build": { "dockerfile": "Dockerfile" },
-  "runArgs": ["--env-file",".devcontainer/ansible.env"],
+  "runArgs": ["--env-file", ".devcontainer/ansible.env"],
   "containerEnv": {
     "ANSIBLE_VERBOSITY": "2",
     "ANSIBLE_INVENTORY": "inventory.yaml",
     "ANSIBLE_HOST_KEY_CHECKING": "False",
-    "ANSIBLE_STDOUT_CALLBACK": "yaml"
+    "ANSIBLE_CALLBACK_RESULT_FORMAT": "yaml"
   },
   "customizations": {
     "vscode": {
-      "extensions": ["redhat.ansible", "esbenp.prettier-vscode", "ms-vscode.makefile-tools"]
+      "extensions": [
+        "redhat.ansible",
+        "esbenp.prettier-vscode",
+        "ms-vscode.makefile-tools"
+      ]
     }
   }
 }
