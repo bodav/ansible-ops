@@ -13,6 +13,10 @@
         dest: ~/dockcheck.sh
         mode: u+rwx
 
+    - name: Print dockcheck version
+      ansible.builtin.command: "./dockcheck.sh -v"
+      changed_when: false
+
     - name: Execute dockcheck
       ansible.builtin.command: "./dockcheck.sh -n -e cron"
       changed_when: false
